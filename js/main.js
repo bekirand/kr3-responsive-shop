@@ -1,12 +1,41 @@
-/* Управление модальным окном быстрого заказа */
+/* Управление мобильной навигацией и модальным окном */
 document.addEventListener('DOMContentLoaded', () => {
+  // 1. Адаптивное мобильное меню навигации
+  const navToggle = document.querySelector('.nav-toggle');
+  const primaryNav = document.getElementById('primary-nav');
+
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener('click', () => {
+      const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', !isExpanded);
+      primaryNav.classList.toggle('site-nav--open');
+    });
+
+    // Закрытие меню по нажатию клавиши Escape
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && primaryNav.classList.contains('site-nav--open')) {
+        primaryNav.classList.remove('site-nav--open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
+    });
+
+    // Закрытие меню при клике по ссылке
+    primaryNav.querySelectorAll('.site-nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        primaryNav.classList.remove('site-nav--open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // 2. Управление модальным окном быстрого заказа через HTML5 dialog
   const modal = document.getElementById('order-modal');
   const openButtons = document.querySelectorAll('.js-open-modal');
   const closeButtons = document.querySelectorAll('.js-close-modal');
 
   if (!modal) return;
 
-  // Открытие модального окна через нативный метод HTML5 dialog
   openButtons.forEach(button => {
     button.addEventListener('click', () => {
       if (typeof modal.showModal === 'function') {
@@ -17,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Закрытие окна по кнопке или крестику
   closeButtons.forEach(button => {
     button.addEventListener('click', () => {
       if (typeof modal.close === 'function') {
@@ -28,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Закрытие при клике по затемненной области backdrop
   modal.addEventListener('click', (event) => {
     const rect = modal.getBoundingClientRect();
     const isInDialog = (
@@ -37,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       rect.left <= event.clientX &&
       event.clientX <= rect.left + rect.width
     );
-    if (!isInDialog) {
+    if (!isInDialog && typeof modal.close === 'function') {
       modal.close();
     }
   });
