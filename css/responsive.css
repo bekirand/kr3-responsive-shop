@@ -1,8 +1,8 @@
 /* Адаптивные стили и доступность магазина SoundPulse (КР №3) */
 
-/* 1. БАЗОВЫЕ НАСТРОЙКИ ДОСТУПНОСТИ И MOBILE FIRST */
+/* 1. БАЗОВЫЕ НАСТРОЙКИ ДОСТУПНОСТИ И СБРОС СЕТКИ */
 
-/* Ссылка быстрого перехода к содержимому (Skip Link) для скринридеров */
+/* Ссылка быстрого перехода к содержимому (Skip Link) */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -24,13 +24,13 @@
   outline-offset: 2px;
 }
 
-/* Видимый контрастный клавиатурный фокус по WCAG AA */
+/* Контрастный клавиатурный фокус по WCAG AA */
 :focus-visible {
   outline: 3px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-/* Резиновые медиа и изображения */
+/* Резиновые изображения и медиа */
 img,
 picture,
 video {
@@ -39,16 +39,23 @@ video {
   display: block;
 }
 
-/* Предотвращение горизонтального скролла на корневом уровне */
+/* Защита от горизонтального скролла всей страницы */
 html,
 body {
   overflow-x: hidden;
   width: 100%;
 }
 
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--space-md);
+  padding-right: var(--space-md);
+}
+
 /* 2. АДАПТИВНАЯ НАВИГАЦИЯ И ШАПКА */
 
-/* Кнопка гамбургер-меню (по умолчанию на мобильных устройствах) */
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -79,7 +86,6 @@ body {
   transition: transform var(--transition-base), opacity var(--transition-base);
 }
 
-/* Анимация кнопки в крестик при открытии меню */
 .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -92,13 +98,12 @@ body {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Мобильное меню навигации (выпадающая шторка) */
 @media (max-width: 859px) {
   .site-header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) 0;
   }
 
   .site-header__contacts {
@@ -124,6 +129,7 @@ body {
   }
 
   .site-nav__list {
+    display: flex;
     flex-direction: column;
     gap: var(--space-xs);
   }
@@ -153,7 +159,6 @@ body {
   }
 }
 
-/* Десктопное меню навигации */
 @media (min-width: 860px) {
   .nav-toggle {
     display: none;
@@ -174,6 +179,7 @@ body {
 
 @media (max-width: 767px) {
   .hero {
+    display: flex;
     flex-direction: column;
     text-align: center;
     gap: var(--space-lg);
@@ -191,6 +197,7 @@ body {
   }
 
   .hero__actions {
+    display: flex;
     flex-direction: column;
     width: 100%;
     gap: var(--space-sm);
@@ -205,14 +212,16 @@ body {
   }
 
   .hero__image {
-    max-width: 260px;
+    max-width: 240px;
     margin: 0 auto;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .hero {
+    display: flex;
     flex-direction: row;
+    align-items: center;
     padding: var(--space-xl);
     gap: var(--space-xl);
   }
@@ -226,14 +235,16 @@ body {
   }
 }
 
-/* 4. АДАПТИВНАЯ СЕТКА КАРТОЧЕК И ПРЕИМУЩЕСТВ */
+/* 4. АДАПТИВНЫЕ СЕТКИ КАРТОЧЕК И ПРЕИМУЩЕСТВ */
 
 @media (max-width: 639px) {
   .cards-grid,
-  .advantages-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .advantages-grid,
+  .catalog-grid,
+  .reviews-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
   }
 
   .product-card {
@@ -251,24 +262,27 @@ body {
 
 @media (min-width: 640px) and (max-width: 1023px) {
   .cards-grid,
-  .advantages-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
+  .advantages-grid,
+  .catalog-grid,
+  .reviews-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-md) !important;
   }
 }
 
 @media (min-width: 1024px) {
-  .cards-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+  .cards-grid,
+  .catalog-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-lg) !important;
   }
 
   .advantages-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-lg);
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--space-lg) !important;
   }
 }
 
@@ -276,34 +290,34 @@ body {
 
 @media (max-width: 899px) {
   .catalog-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-lg) !important;
   }
 
   .catalog-filter {
-    position: static;
-    width: 100%;
+    position: static !important;
+    width: 100% !important;
     margin-bottom: var(--space-md);
   }
 
   .catalog-filter__group {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: var(--space-xs);
   }
 }
 
 @media (min-width: 900px) {
   .catalog-layout {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: var(--space-xl);
+    display: grid !important;
+    grid-template-columns: 280px 1fr !important;
+    gap: var(--space-xl) !important;
     align-items: start;
   }
 
   .catalog-filter {
-    position: sticky;
+    position: sticky !important;
     top: 90px;
   }
 }
@@ -311,25 +325,28 @@ body {
 /* 6. АДАПТИВНАЯ КАРТОЧКА ТОВАРА */
 
 @media (max-width: 859px) {
-  .product-detail {
-    flex-direction: column;
-    gap: var(--space-lg);
+  .product-details {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-lg) !important;
+    padding: var(--space-md) !important;
     text-align: center;
   }
 
-  .product-detail__gallery {
+  .product-gallery {
     width: 100%;
     max-width: 380px;
     margin: 0 auto;
   }
 
-  .product-detail__actions {
+  .product-info__actions {
+    display: flex;
     flex-direction: column;
     width: 100%;
     gap: var(--space-sm);
   }
 
-  .product-detail__actions .button {
+  .product-info__actions .button {
     width: 100%;
     min-height: 48px;
     display: flex;
@@ -339,23 +356,15 @@ body {
 }
 
 @media (min-width: 860px) {
-  .product-detail {
-    display: flex;
-    flex-direction: row;
-    gap: var(--space-xxl);
-    align-items: flex-start;
-  }
-
-  .product-detail__gallery {
-    flex: 1;
-  }
-
-  .product-detail__info {
-    flex: 1.2;
+  .product-details {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-xxl) !important;
+    padding: var(--space-xl) !important;
   }
 }
 
-/* 7. АДАПТИВНАЯ ТАБЛИЦА ХАРАКТЕРИСТИК (КАРТОЧНОЕ ПРЕДСТАВЛЕНИЕ) */
+/* 7. АДАПТИВНАЯ ТАБЛИЦА ХАРАКТЕРИСТИК (КАРТОЧНЫЙ ВИД) */
 
 .table-wrapper {
   width: 100%;
@@ -364,18 +373,17 @@ body {
   border-radius: var(--radius-sm);
 }
 
-/* Превращение таблицы в карточный список на смартфонах (< 640px) */
 @media (max-width: 639px) {
   .specs-table,
   .specs-table__body,
   .specs-table__row,
   .specs-table__cell {
-    display: block;
-    width: 100%;
+    display: block !important;
+    width: 100% !important;
   }
 
   .specs-table__head {
-    display: none;
+    display: none !important;
   }
 
   .specs-table__row {
@@ -398,11 +406,11 @@ body {
   }
 
   .specs-table__cell:not(.specs-table__cell--row-head) {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm) var(--space-md) !important;
     border-bottom: 1px dashed var(--color-border);
     text-align: right;
     font-size: 0.9rem;
@@ -426,9 +434,11 @@ body {
 /* 8. АДАПТИВНЫЕ ФОРМЫ */
 
 @media (max-width: 639px) {
+  .form-container,
   .order-form,
   .feedback-form {
     padding: var(--space-md);
+    width: 100%;
   }
 
   .order-form__input,
@@ -441,6 +451,13 @@ body {
     font-size: 1rem;
   }
 
+  .order-form__actions,
+  .feedback-form__actions {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .order-form__actions .button,
   .feedback-form__button {
     width: 100%;
@@ -451,29 +468,21 @@ body {
   }
 }
 
-@media (min-width: 640px) {
-  .order-form__row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
-  }
-}
-
 /* 9. АДАПТИВНЫЕ КОНТАКТЫ */
 
 @media (max-width: 859px) {
   .contacts-layout {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xl);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-xl) !important;
   }
 }
 
 @media (min-width: 860px) {
   .contacts-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xxl);
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: var(--space-xxl) !important;
   }
 }
 
@@ -481,18 +490,40 @@ body {
 
 @media (max-width: 767px) {
   .site-footer__inner {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--space-lg);
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--space-lg) !important;
+    text-align: left !important;
   }
 
-  .site-footer__nav {
+  .site-footer__col {
+    width: 100% !important;
+  }
+
+  .site-footer__bottom {
     flex-direction: column;
     gap: var(--space-sm);
+    text-align: center;
   }
 }
 
-/* 11. ПОДДЕРЖКА ПРЕДПОЧТЕНИЯ УМЕНЬШЕНИЯ АНИМАЦИЙ (PREFERS-REDUCED-MOTION) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-footer__inner {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-lg) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__inner {
+    display: grid !important;
+    grid-template-columns: 2fr repeat(3, 1fr) !important;
+    gap: var(--space-xl) !important;
+  }
+}
+
+/* 11. ПОДДЕРЖКА PREFERS-REDUCED-MOTION */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -505,7 +536,7 @@ body {
   }
 }
 
-/* 12. ШИРОКИЕ ДЕСКТОПЫ (>= 1440px) */
+/* 12. ШИРОКИЕ МОНИТОРЫ (>= 1440px) */
 
 @media (min-width: 1440px) {
   .container {
