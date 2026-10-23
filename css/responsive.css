@@ -543,3 +543,13 @@ body {
     max-width: 1320px;
   }
 }
+
+/* Улучшение отклика тач-устройств для карточек характеристик на мобильных */
+@media (max-width: 639px) {
+  .specs-table__row {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .specs-table__row:active {
+    transform: scale(0.99);
+  }
+}
