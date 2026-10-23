@@ -6,8 +6,11 @@
   <title>Каталог аудиотехники и акустики — SoundPulse</title>
   <meta name="description" content="Полный каталог аудиофильской техники SoundPulse: наушники, мониторы, ЦАП, портативная акустика. Фильтры по параметрам и официальная гарантия.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+  <!-- Ссылка быстрого перехода к содержимому для скринридеров и клавиатурной навигации -->
+  <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
   <!-- Сквозная шапка сайта с навигацией -->
   <header class="site-header">
@@ -17,7 +20,15 @@
         <span>SoundPulse</span>
       </a>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+      
+      <!-- Кнопка мобильного гамбургер-меню -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню навигации">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+
+      <nav id="primary-nav" class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item">
             <a href="index.html" class="site-nav__link">Главная</a>
@@ -45,7 +56,7 @@
   </header>
 
   <!-- Единственный тег main на странице -->
-  <main class="main-content">
+  <main id="main-content" class="main-content" tabindex="-1">
     <div class="container">
 
       <!-- Навигационная цепочка хлебных крошек -->
@@ -149,7 +160,7 @@
             <article class="product-card product-card--hit">
               <span class="product-card__badge product-card__badge--hit">Хит продаж</span>
               <div class="product-card__image-wrap">
-                <img src="images/headphones-pro.svg" alt="Беспроводные наушники SoundPulse Pro Wireless" class="product-card__image" width="320" height="240">
+                <img src="images/headphones-pro.svg" alt="Беспроводные наушники SoundPulse Pro Wireless" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Беспроводные наушники</span>
@@ -176,7 +187,7 @@
             <article class="product-card">
               <span class="product-card__badge product-card__badge--new">Новинка</span>
               <div class="product-card__image-wrap">
-                <img src="images/studio-monitors.svg" alt="Студийные мониторы SoundPulse Studio Monitor 5" class="product-card__image" width="320" height="240">
+                <img src="images/studio-monitors.svg" alt="Студийные мониторы SoundPulse Studio Monitor 5" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Студийная акустика</span>
@@ -202,7 +213,7 @@
             <article class="product-card product-card--discount">
               <span class="product-card__badge product-card__badge--discount">-18%</span>
               <div class="product-card__image-wrap">
-                <img src="images/dac-amp.svg" alt="ЦАП и усилитель SoundPulse DAC Audio Master" class="product-card__image" width="320" height="240">
+                <img src="images/dac-amp.svg" alt="ЦАП и усилитель SoundPulse DAC Audio Master" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Усилители и ЦАП</span>
@@ -229,7 +240,7 @@
             <article class="product-card product-card--hit">
               <span class="product-card__badge product-card__badge--hit">Хит продаж</span>
               <div class="product-card__image-wrap">
-                <img src="images/portable-speaker.svg" alt="Портативная колонка SoundPulse Beat Wave" class="product-card__image" width="320" height="240">
+                <img src="images/portable-speaker.svg" alt="Портативная колонка SoundPulse Beat Wave" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Портативная акустика</span>
@@ -255,7 +266,7 @@
             <article class="product-card">
               <span class="product-card__badge product-card__badge--new">Новинка</span>
               <div class="product-card__image-wrap">
-                <img src="images/earbuds.svg" alt="Беспроводные внутриканальные наушники SoundPulse Air Clarity" class="product-card__image" width="320" height="240">
+                <img src="images/earbuds.svg" alt="Беспроводные внутриканальные наушники SoundPulse Air Clarity" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Внутриканальные TWS</span>
@@ -281,7 +292,7 @@
             <article class="product-card product-card--discount">
               <span class="product-card__badge product-card__badge--discount">-12%</span>
               <div class="product-card__image-wrap">
-                <img src="images/headphones-pro.svg" alt="Планарные наушники SoundPulse Studio Reference" class="product-card__image" width="320" height="240">
+                <img src="images/headphones-pro.svg" alt="Планарные наушники SoundPulse Studio Reference" class="product-card__image" width="320" height="240" loading="lazy">
               </div>
               <div class="product-card__body">
                 <span class="product-card__category">Открытые мониторные</span>

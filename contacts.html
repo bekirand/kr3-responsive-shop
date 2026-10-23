@@ -6,8 +6,11 @@
   <title>Контакты и флагманский шоурум в Москве — SoundPulse</title>
   <meta name="description" content="Контакты магазина аудиофильской техники SoundPulse: адрес шоурума в Москве, телефоны, график работы и форма записи на индивидуальное прослушивание.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+  <!-- Ссылка быстрого перехода к содержимому для скринридеров и клавиатурной навигации -->
+  <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
 
   <!-- Сквозная шапка сайта с навигацией -->
   <header class="site-header">
@@ -17,7 +20,15 @@
         <span>SoundPulse</span>
       </a>
 
-      <nav class="site-nav" aria-label="Основная навигация">
+      
+      <!-- Кнопка мобильного гамбургер-меню -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Открыть меню навигации">
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+        <span class="nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+
+      <nav id="primary-nav" class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li class="site-nav__item">
             <a href="index.html" class="site-nav__link">Главная</a>
@@ -45,7 +56,7 @@
   </header>
 
   <!-- Единственный тег main на странице -->
-  <main class="main-content">
+  <main id="main-content" class="main-content" tabindex="-1">
     <div class="container">
 
       <!-- Навигационная цепочка хлебных крошек -->
